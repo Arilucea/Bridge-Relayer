@@ -1,13 +1,28 @@
 # Bridge-Relayer
 Relayer for the cross-chain [NFT bridge](https://github.com/Arilucea/Bridge-Solana-Evm) between Ethereum Virtual Machine (EVM) and Solana blockchain networks..
 
+## Table of Contents
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Flow](#flow)
+- [Components](#components)
+- [Technical Implementation](#technical-implementation)
+- [Configuration](#configuration)
+- [Installation Guide](#installation-guide)
+- [Development](#development)
+- [Security Considerations](#security-considerations)
+- [Troubleshooting](#troubleshooting)
+- [FAQ](#faq)
+- [License](#license)
+
+
 ## Overview
-Bridge-Relayer enables the transfer of NFTs between Solana and EVM-compatible blockchains. It service that listens for events on both chains and facilitates the transfer of assets between them.
+Bridge-Relayer facilitates the transfer of NFTs between Solana and EVM-compatible blockchains. It is a service that listens for events on both chains and facilitates the transfer of assets between them.
 
 ## Architecture
 The bridge consists of several components:
 
-1. **API Server**: Provides HTTP endpoints for initiating bridge transfers and querying the status of transfer requests.
+1. **API Server**: Provides HTTP endpoints to initiate bridge transfers and query their status.
 2. **Request Processor**: Handles the lifecycle of bridge requests from initiation to completion.
 3. **Solana Client**: Monitors Solana blockchain for bridge events and processes token transfers from Solana.
 4. **EVM Client**: Monitors EVM-compatible blockchains for bridge events and processes token transfers from EVM chains.
@@ -18,7 +33,7 @@ The bridge consists of several components:
 2. The bridge validates the request and locks the token on the source chain
 3. The bridge monitors for events confirming the token has been locked
 4. Once confirmed, the bridge mints the token on the destination chain
-5. Bridge monitors for events confirming the token has been created
+5. Bridge monitors for events confirming the token’s creation.
 6. The request is marked as completed
 
 ### Detailed Flow
@@ -183,21 +198,30 @@ The bridge is configured using environment variables:
 3. Create a `.env` file based on the example:
    ```bash
    cp .env.example .env
-   # Edit .env with your configuration
    ```
-   
-### Running the Bridge
-1. Start the bridge: `cargo run`
+   Edit .env with your configuration
 
 ### Logs and Debugging
 - Set the `RUST_LOG` environment variable to control log levels:
   ```bash
-  RUST_LOG=info
+  export RUST_LOG=info
   ```
+   
+### Start the Bridge
+1. Start the bridge:
+    ```bash
+    cargo run
+    ```
 
 ### Build release
-1. Build the project: `cargo build --release`
-2. Run the bridge: `./target/release/sol_evm_bridge`
+1. Build the project: 
+    ```bash
+    cargo build --release
+    ```
+2. Run the bridge:
+    ```bash
+    ./target/release/sol_evm_bridge
+    ```
 
 
 ## Development
