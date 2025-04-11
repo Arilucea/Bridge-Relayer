@@ -9,7 +9,7 @@ repository = "https://github.com/Arilucea/Bridge-Relayer"
 [workspace]
 resolver = "2"
 members = [
-    "bin/sol_evm_bridge", "crates/api", "crates/evm", "crates/requests", "crates/solana",
+    "bin/bridge_relayer", "crates/api", "crates/evm", "crates/requests", "crates/solana",
     "crates/storage", "crates/requests", "crates/types"]
 
 [workspace.dependencies]

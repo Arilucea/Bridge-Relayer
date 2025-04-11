@@ -84,7 +84,7 @@ fn update_pending_hashmap(db: &Database, indexes: HashMap<String, i128>) -> Resu
 pub async fn process_pending_request(pending: Vec<String>, state: AppState) {
     for id in pending {
         if let Some(mut request) = state.db.read::<_, BRequest>(&id).unwrap() {
-            println!("Request in pending: {:?}", request.clone());
+            info!("Request in pending: {:?}", request.clone());
 
             match request.input.origin_network {
                 Chains::EVM => {
@@ -118,7 +118,7 @@ pub async fn process_pending_request(pending: Vec<String>, state: AppState) {
                 }
             }
         } else {
-            println!("Error processing pending requests");
+            error!("Error processing pending requests");
         }
         sleep(Duration::from_secs(8));
     }
@@ -182,7 +182,7 @@ async fn process_solana_pending_request(mut request: BRequest, state: &AppState)
                 let data = evm::get_transaction_data(state.evm_client.clone(), &last_tx)
                     .await
                     .unwrap();
-                println!("Transaction data exist {:?}", data);
+                info!("Transaction data exist {:?}", data);
                 let token_contract =
                     Address::from_str(&request.output.detination_contract_id_or_mint).unwrap();
                 let token_id: U256 = request

@@ -81,6 +81,20 @@ pub async fn request_data(
     }
 }
 
+pub async fn block_explorers(
+    State(state): State<AppState>,
+) -> Result<Json<Value>, axum::http::StatusCode> {
+    if state.evm_client.block_explorer != String::default()
+        && state.solana_client.block_explorer != String::default()
+    {
+        Ok(
+            json!({"EVM": state.evm_client.block_explorer, "SOLANA": state.solana_client.block_explorer}).into(),
+        )
+    } else {
+        Err(axum::http::StatusCode::NOT_FOUND)
+    }
+}
+
 pub async fn completed_requests(
     State(state): State<AppState>,
 ) -> Result<Json<Vec<String>>, axum::http::StatusCode> {

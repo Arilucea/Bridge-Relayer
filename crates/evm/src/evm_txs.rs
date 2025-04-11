@@ -70,7 +70,7 @@ pub async fn initialize_evm_request(
 
     let pending_tx = provider.send_transaction(tx).await?;
 
-    println!("Transaction sent: {:?}", pending_tx);
+    info!("Transaction sent: {:?}", pending_tx);
     let receipt = pending_tx.register().await?;
     let tx_hash = receipt.tx_hash().to_string();
 
@@ -125,7 +125,7 @@ pub async fn mint_new_token(
         // Send the transaction
         let builder = provider.send_transaction(tx).await?;
 
-        println!("Transaction sent: {:?}", builder);
+        info!("Transaction sent: {:?}", builder);
         let receipt = builder.register().await?;
         let tx_hash = receipt.tx_hash().to_string();
 

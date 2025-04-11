@@ -33,7 +33,7 @@ pub fn get_metadata(client: &SolanaClient, token_mint: &str) -> Result<String> {
 
 pub async fn check_token_owner(db: &Database, client: &SolanaClient, request_id: &str) {
     if let Ok(Some(mut request)) = types::request_data(request_id, db) {
-        info!("CHecking owner");
+        info!("Checking owner");
         if request.status == Status::RequestReceived {
             let token_mint_pubkey = Pubkey::from_str(&request.input.contract_or_mint).unwrap();
             let bridge_token_account_pubkey =
@@ -47,9 +47,6 @@ pub async fn check_token_owner(db: &Database, client: &SolanaClient, request_id:
                 .unwrap();
             if let Ok(token_data) = spl_token::state::Account::unpack(&data) {
                 if token_data.owner == client.bridge_account && token_data.amount == 1 {
-                    println!("Token data owner {:?}", token_data.owner);
-                    println!("Token data amount {:?}", token_data.amount);
-
                     request.update_state(db).unwrap();
 
                     let metadata = get_metadata(client, &request.input.contract_or_mint).unwrap();

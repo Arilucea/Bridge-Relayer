@@ -68,8 +68,7 @@ impl BRequest {
             Status::RequestReceived => self.status = Status::TokenReceived,
             Status::TokenReceived => self.status = Status::TokenMinted,
             Status::TokenMinted => self.status = Status::Completed,
-            Status::Completed => println!("Nothing else"),
-            Status::Canceled => println!("Nothing else"),
+            Status::Completed | Status::Canceled => {}
         }
         self.last_update = Self::current_time();
 

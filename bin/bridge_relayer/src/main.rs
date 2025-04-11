@@ -20,11 +20,13 @@ struct Config {
     evm_ws: String,
     evm_pk: String,
     evm_bridge_contract: String,
+    evm_block_explorer: String,
     solana_wallet: String,
     solana_rpc: String,
     solana_ws: String,
     solana_bridge_program: String,
     solana_bridge_account: String,
+    solana_block_explorer: String,
     port: u16,
 }
 
@@ -64,6 +66,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         &config.solana_bridge_program,
         &config.solana_bridge_account,
         tx_evm.clone(),
+        &config.solana_block_explorer,
     )
     .map_err(|e| {
         format!(
@@ -79,6 +82,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         &config.evm_pk,
         &config.evm_bridge_contract,
         tx_sol.clone(),
+        &config.evm_block_explorer,
     )
     .map_err(|e| {
         format!(

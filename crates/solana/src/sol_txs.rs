@@ -25,7 +25,7 @@ pub async fn initialize_request(
         &token_mint_pubkey,
     );
 
-    println!("Bridge token account {}", bridge_token_account_pubkey);
+    info!("Bridge token account {}", bridge_token_account_pubkey);
 
     let program_client = Client::new(
         Cluster::Custom(client.rpc.url(), client.ws_url.clone()),
@@ -63,7 +63,7 @@ pub async fn initialize_request(
     // Send the transaction
     let signature = client.rpc.send_and_confirm_transaction(&transaction)?;
 
-    println!("Transaction successful with signature: {}", signature);
+    info!("Transaction successful with signature: {}", signature);
 
     Ok(signature)
 }
@@ -99,7 +99,7 @@ pub async fn mint_new_token(
             &mint_pubkey,
         );
 
-        println!(
+        info!(
             "User token account {} for mint {}",
             user_token_account_pubkey, mint_pubkey
         );
@@ -171,7 +171,7 @@ pub async fn mint_new_token(
         // Send the transaction
         let signature = client.rpc.send_and_confirm_transaction(&transaction)?;
 
-        println!("Transaction successful with signature: {}", signature);
+        info!("Transaction successful with signature: {}", signature);
 
         request.add_tx(&signature.to_string(), db)?;
         if request.status == Status::TokenReceived {

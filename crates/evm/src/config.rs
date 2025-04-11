@@ -18,6 +18,7 @@ pub struct EVMClient {
     pub signer: Arc<EthereumWallet>,
     pub bridge_contract: Address,
     pub tx_channel: Sender<TxMessage>,
+    pub block_explorer: String,
 }
 
 pub fn evm_initialize(
@@ -26,6 +27,7 @@ pub fn evm_initialize(
     account_key: &str,
     bridge_contract: &str,
     tx_channel: Sender<TxMessage>,
+    block_explorer: &str,
 ) -> Result<EVMClient> {
     let signer: PrivateKeySigner = account_key.parse().expect("should parse private key");
     let wallet = EthereumWallet::from(signer.clone());
@@ -38,6 +40,7 @@ pub fn evm_initialize(
         signer: Arc::new(wallet),
         bridge_contract: bridge_contract_address,
         tx_channel: tx_channel,
+        block_explorer: block_explorer.to_string(),
     };
 
     Ok(evm_client)

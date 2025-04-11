@@ -1,4 +1,4 @@
-# Bridge-Relayer
+# Bridge Relayer
 Relayer for the cross-chain [NFT bridge](https://github.com/Arilucea/Bridge-Solana-Evm) between Ethereum Virtual Machine (EVM) and Solana blockchain networks..
 
 ## Table of Contents
@@ -220,7 +220,7 @@ The bridge is configured using environment variables:
     ```
 2. Run the bridge:
     ```bash
-    ./target/release/sol_evm_bridge
+    ./target/release/Bridge_Relayer
     ```
 
 
@@ -228,7 +228,7 @@ The bridge is configured using environment variables:
 
 ### Project Structure
 The project is organized as a Rust workspace with multiple crates:
-- `bin/sol_evm_bridge`: Main executable
+- `bin/bridge_relayer`: Main executable
 - `crates/api`: API server
 - `crates/requests`: Request processing
 - `crates/evm`: EVM client

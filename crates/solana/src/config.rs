@@ -20,6 +20,7 @@ pub struct SolanaClient {
     pub bridge_program: Pubkey,
     pub bridge_account: Pubkey,
     pub tx_channel: Sender<TxMessage>,
+    pub block_explorer: String,
 }
 
 pub fn solana_connection(
@@ -29,6 +30,7 @@ pub fn solana_connection(
     bridge_program: &str,
     bridge_account: &str,
     tx_channel: Sender<TxMessage>,
+    block_explorer: &str,
 ) -> Result<SolanaClient> {
     let client: RpcClient =
         RpcClient::new_with_commitment(rpc_url.to_string(), CommitmentConfig::confirmed());
@@ -46,6 +48,7 @@ pub fn solana_connection(
         bridge_program: bridge_program_pubkey,
         bridge_account: bridge_account_pubkey,
         tx_channel: tx_channel,
+        block_explorer: block_explorer.to_string(),
     };
 
     Ok(solana_client)
