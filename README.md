@@ -1,5 +1,8 @@
 # Bridge Relayer
-Relayer for the cross-chain [NFT bridge](https://github.com/Arilucea/Bridge-Solana-Evm) between Ethereum Virtual Machine (EVM) and Solana blockchain networks..
+Relayer for the cross-chain NFT bridge [ArBridge](https://github.com/Arilucea/ArBridge) between Ethereum Virtual Machine (EVM) and Solana blockchain networks.
+
+[![GitHub release](https://img.shields.io/github/v/release/Arilucea/Bridge-Relayer)](https://github.com/Arilucea/Bridge-Relayer/releases)
+[![License](https://img.shields.io/github/license/Arilucea/Bridge-Relayer)](https://github.com/Arilucea/Bridge-Relayer/blob/main/LICENSE)
 
 ## Table of Contents
 - [Overview](#overview)
